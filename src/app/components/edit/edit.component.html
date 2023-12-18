@@ -12,6 +12,11 @@
     <input type="text" formControlName="email" >
     <div *ngIf="personForm.get('email').errors">{{personForm.get('email').errors | json}}</div>
 
+    <ng-container formGroupName="address">
+    <input type="text" formControlName="street" >
+    <input type="text" formControlName="city" >
+    </ng-container>
+
     <button [disabled]="personForm.invalid">submit</button>
 
 </form>

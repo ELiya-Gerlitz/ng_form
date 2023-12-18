@@ -12,7 +12,11 @@ export class EditComponent implements OnInit{
     id: 1,
     firstName: 'Rivka',
     lastName: 'Weisz',
-    email: 'RW@gmail.com'
+    email: 'RW@gmail.com',
+    address: {
+      city:"Zürich",
+      street: "Brandschenkestr. 14"
+    }
   }
   public personForm : FormGroup
 
@@ -22,7 +26,11 @@ export class EditComponent implements OnInit{
     id: [this.personToEdit.id, [Validators.required]],
     firstName: [this.personToEdit.firstName, [Validators.required, this.customValidation]],
     lastName: [this.personToEdit.lastName, [Validators.required, this.customValidation]],
-    email: [this.personToEdit.email, [Validators.required]]
+    email: [this.personToEdit.email, [Validators.required]],
+    address: this.formBuilder.group({
+      street: this.personToEdit.address.street,
+      city: this.personToEdit.address.city,
+    })
 })
   }
   public submit(){
