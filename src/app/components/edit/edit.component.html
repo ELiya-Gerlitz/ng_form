@@ -1,0 +1,31 @@
+<p>edit works!</p>
+<form [formGroup]="personForm" (ngSubmit)="submit()">
+    <input type="number" formControlName="id" >
+    <div *ngIf="personForm.get('id').errors">{{personForm.get('id').errors | json}}</div>
+
+    <input type="text" formControlName="firstName" >
+    <div class="errorDiv" *ngIf="personForm.get('firstName').hasError('errorMessage')">{{personForm.get('firstName').getError('errorMessage')['length error']}}</div>
+    
+    <input type="text" formControlName="lastName" >
+    <div *ngIf="personForm.get('lastName').errors">{{personForm.get('lastName').errors | json}}</div>
+    
+    <input type="text" formControlName="email" >
+    <div *ngIf="personForm.get('email').errors">{{personForm.get('email').errors | json}}</div>
+
+    <button [disabled]="personForm.invalid">submit</button>
+
+</form>
+
+<!-- just for checking :  -->
+<table border="1">
+    <tr>
+        <th>personToEdit</th>
+        <th>personForm</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>{{personToEdit | json}}</td>
+            <td>{{personForm.value | json}}</td>
+        </tr>
+    </tbody>
+</table>
