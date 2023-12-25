@@ -1,0 +1,27 @@
+<p>edit2-nested-form works!</p>
+<form (ngSubmit)="submit()" [formGroup]="personForm">
+    <input type="number" formControlName="id">
+    <input type="text" formControlName="firstName">
+    <input type="text" formControlName="lastName">
+    <input type="text" formControlName="email">
+
+    <ng-container formGroupName="address" >
+        <input type="text" formControlName="city">
+        <input type="text" formControlName="street">
+    </ng-container>
+    
+    <button>Submit</button>
+</form>
+
+<table border="1">
+    <tr>
+        <th>Person To Edit: (original Object)</th>
+        <th>personForm</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>{{personToEdit | json}}</td>
+            <td>{{personForm.value | json}}</td>
+        </tr>
+    </tbody>
+</table>

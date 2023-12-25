@@ -1,4 +1,5 @@
 import { AddressModel } from "./AddressModel"
+import { ChildrenModel } from "./ChildrenModel"
 
 export interface Person{
     id: number
@@ -6,4 +7,5 @@ export interface Person{
     lastName: string
     email: string
     address: AddressModel
+    children : ChildrenModel []
 }
