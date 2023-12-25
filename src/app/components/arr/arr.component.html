@@ -1,30 +1,36 @@
-<p>nested-array works!</p>
+<p>arr works!</p>
 <form (ngSubmit)="submit()" [formGroup]="personForm">
     <input type="number" formControlName="id">
     <input type="text" formControlName="firstName">
+    <div class="errors" *ngIf="personForm.get('firstName').errors">
+        <div>
+            {{personForm.get('firstName').errors|json}}
+        </div>
+    </div>
     <input type="text" formControlName="lastName">
     <input type="text" formControlName="email">
     <ng-container formGroupName="address">
         <input type="text" formControlName="city">
         <input type="text" formControlName="street">
     </ng-container>
+
     <ng-container formArrayName="children" *ngFor="let childForm of childrenControlGetter.controls let i=index">
-        <div [formGroupName]="i">
+        <ng-container [formGroupName]="i">
             <input type="text" formControlName="name">
             <input type="number" formControlName="age">
-        </div>
+        </ng-container>
     </ng-container>
-    <button [disabled]="personForm.invalid">submit</button>
+<button [disabled]="personForm.invalid">submit</button>
 </form>
-<table>
+<table border="1">
     <tr>
-        <th>personToEdit</th>
-        <th>personForm</th>
+        <th>PersonToEdit</th>
+        <th>PersonForm</th>
     </tr>
     <tbody>
         <tr>
-            <td>{{personToEdit | json}}</td>
-            <td>{{personForm.value | json}}</td>
+            <td>{{personToEdit |json}}</td>
+            <td>{{personForm.value |json}}</td>
         </tr>
     </tbody>
 </table>

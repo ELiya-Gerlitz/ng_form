@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Edit2NestedFormComponent } from './components/edit2-nested-form/edit2-nested-form.component';
 import { NestedArrayComponent } from './components/nested-array/nested-array.component';
+import { ArrComponent } from './components/arr/arr.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NestedArrayComponent } from './components/nested-array/nested-array.com
     HomeComponent,
     EditComponent,
     Edit2NestedFormComponent,
-    NestedArrayComponent
+    NestedArrayComponent,
+    ArrComponent
   ],
   imports: [
     BrowserModule,

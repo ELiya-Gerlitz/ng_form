@@ -41,37 +41,35 @@ export class NestedArrayComponent implements OnInit{
     })
   }
   get childrenControlGetter(): FormArray{
-    const arr=  this.personForm.get("children") as FormArray
+    const arr :FormArray = this.personForm.get("children") as FormArray
     return arr
-  }
-  public childrenArray():FormArray{
-    const arr = []
-    for (const child of this.personToEdit.children) {
-      const group :FormGroup = this.fb.group({
-        name: child.name,
-        age: child.age,
-      })
-      arr.push(group)
-    }
-    return this.fb.array(arr)
   }
   // public childrenArray():FormArray{
   //   const arr = []
   //   for (const child of this.personToEdit.children) {
-  //     const group = this.childrenForms(child)
+  //     const group :FormGroup = this.fb.group({
+  //       name: child.name,
+  //       age: child.age,
+  //     })
   //     arr.push(group)
   //   }
   //   return this.fb.array(arr)
   // }
-  // public childForm: FormGroup
-  // public childrenForms(child : ChildrenModel): FormGroup{
-  //   this.childForm =  this.fb.group({
-  //     name: [child.name],
-  //     age: [child.age],
+  public childrenArray():FormArray{
+    const arr = []
+    for (const child of this.personToEdit.children) {
+      const group = this.childrenForms(child)
+      arr.push(group)
+    }
+    return this.fb.array(arr)
+  }
+  public childrenForms(child : ChildrenModel): FormGroup{
+    return this.fb.group({
+      name: [child.name],
+      age: [child.age],
 
-  //   })
-  //   return this.childForm
-  // }
+    })
+  }
   public addressGroup(): FormGroup{
     return this.fb.group({
       city: [this.personToEdit.address.city],
@@ -79,6 +77,7 @@ export class NestedArrayComponent implements OnInit{
     })
   }
   public submit(){
+    this.personToEdit = this .personForm.value
 
   }
 

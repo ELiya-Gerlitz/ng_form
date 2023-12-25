@@ -4,12 +4,14 @@ import { HomeComponent } from './components/home/home.component';
 import { EditComponent } from './components/edit/edit.component';
 import { Edit2NestedFormComponent } from './components/edit2-nested-form/edit2-nested-form.component';
 import { NestedArrayComponent } from './components/nested-array/nested-array.component';
+import { ArrComponent } from './components/arr/arr.component';
 
 const routes: Routes = [
   {path: "home", component: HomeComponent},
   {path: "edit", component: EditComponent},
   {path: "edit-nested", component: Edit2NestedFormComponent},
   {path: "nested-array", component: NestedArrayComponent},
+  {path: "arr", component: ArrComponent},
   {path: "", pathMatch: "full" ,redirectTo: "home"},
 
 ];
