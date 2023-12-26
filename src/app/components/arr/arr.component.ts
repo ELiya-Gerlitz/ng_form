@@ -35,11 +35,12 @@ export class ArrComponent implements OnInit {
       address: this.addressForm(),
       children: this.childrenArr()
     })
+    this.personForm.valueChanges.pipe(filter(x=> this.personForm.valid), debounceTime(500)).subscribe(x=>this.personToEdit = this.personForm.value)
   }
   public addressForm():FormGroup{
     return this.fb.group({
       city: [this.personToEdit.address.city, Validators.required],
-      street: [this.personToEdit.address.street, [Validators.required, Validators.min(1)]],
+      street: [this.personToEdit.address.street, [Validators.required, Validators.minLength(1)]],
     })
   }
   public childrenArr():FormArray{

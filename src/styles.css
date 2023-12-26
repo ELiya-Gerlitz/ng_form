@@ -1,8 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css"; */
+
 form .ng-invalid , .error{
     border: 2px solid  red;
     outline: none;
 }
 .errorDiv{
     color: red;
+}
+button:hover{
+    cursor: pointer;
+    background-image: linear-gradient(blue, blue);
+    color: white;
+}
+button{
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-image: linear-gradient(rgb(153, 150, 150), rgb(240, 231, 231));
 }
