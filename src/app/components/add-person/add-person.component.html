@@ -22,9 +22,9 @@
     <ng-container formArrayName="children">
       <ng-container *ngFor="let childForm of childrenFormArray.controls; let i=index" [formGroupName]="i">
             <label>CHILDREN</label>
-            <input type="text" placeholder="name" formControlName="name" [id]="'nameId' + (i+1)"/>
-            <input type="number" placeholder="age" formControlName="age" [id]="'ageId' + (i+1)"/>
-            
+            <input type="text" placeholder="name" formControlName="name" [id]="'nameId' + (i)"/>
+            <input type="number" placeholder="age" formControlName="age" [id]="'ageId' + (i)"/>
+
             <button class="add" (click)="addChild()" type="button">+</button>
             <button class="add" (click)="removeChild(i)" type="button">-</button>
       </ng-container>
@@ -35,3 +35,6 @@
 
   </div>
 </form>
+
+<input type="number" [(ngModel)]="personObjectToDelete"/>
+<button (click)="deletePerson(personObjectToDelete)">delete</button>

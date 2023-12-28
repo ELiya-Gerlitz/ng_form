@@ -12,6 +12,7 @@ export class AddPersonComponent implements OnInit{
 public peopleArr: Person[] = []
 public newPerson: Person 
 public personForm : FormGroup
+public personObjectToDelete : number
 
 public constructor(private fb: FormBuilder){}
 
@@ -45,19 +46,26 @@ public constructor(private fb: FormBuilder){}
  
   
 public submit(){
-this.personForm.value.id = this.peopleArr.length +1
+this.personForm.value.id = this.peopleArr.length 
 this.newPerson = this.personForm.value
 this.peopleArr.push(this.newPerson)
 console.log(this.peopleArr)
 this.personForm.setControl('children', this.fb.array([this.createChildFormGroup()]));
 this.personForm.reset()
-alert("SUCCESSFULLY ADDED!")
+// alert("SUCCESSFULLY ADDED!")
 }
 
 public removeChild(num : number){
   if(num >0){
     this.childrenFormArray.removeAt(num)
   }
+}
+
+public deletePerson(personObjectToDelete :number){
+  alert(personObjectToDelete)
+  const indexToDelete = this.peopleArr.findIndex(x=>x.id === personObjectToDelete)
+  this.peopleArr.splice(indexToDelete, 1)
+  console.log(this.peopleArr)
 }
   }
 
