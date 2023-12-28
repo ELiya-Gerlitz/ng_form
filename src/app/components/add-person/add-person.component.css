@@ -103,7 +103,12 @@ input {
 .button1:disabled:hover::before{
   opacity: 100%;
   content: "ALL FIELDS REQUIRED!"; 
-
+  background: #f21d99 !important;
+  background-color: #f21d99 !important;
+}
+.button1:disabled:hover{
+  background: #f21d99 !important;
+  background-color: #f21d99 !important;
 
 }
 

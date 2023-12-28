@@ -18,38 +18,47 @@ public constructor(private fb: FormBuilder){}
   ngOnInit(): void {
     this.personForm = this.fb.group({
       firstName: ['', Validators.required],
-      lastName: '',
-      email: '',
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       address: this.fb.group({
-        city: '',
-        street: '',
+        city: ['', Validators.required],
+        street: ['', Validators.required],
       }),
       children: this.fb.array([this.createChildFormGroup()]),
     })
   }
 
-  get childrenFormArray(): FormArray{
+  get childrenFormArray(): FormArray{ // איך 'שולים' שדה מאובייקט של טופס? 🐟🎣 =>
     return this.personForm.get('children') as FormArray
   }
 
   public createChildFormGroup(): FormGroup {
     return this.fb.group({
-      name: '',
-      age: null 
-    }as ChildrenModel);
+      name: ['', Validators.required],
+      age: [null , [Validators. required, Validators.min(0)]]
+    })as  ChildrenModel & FormGroup;
   }
   
   public addChild():void{
-        this.childrenFormArray.push(this.createChildFormGroup());
-  
-      }
+    this.childrenFormArray.push(this.createChildFormGroup());
+  }
+ 
   
 public submit(){
+this.personForm.value.id = this.peopleArr.length +1
 this.newPerson = this.personForm.value
 this.peopleArr.push(this.newPerson)
 console.log(this.peopleArr)
 this.personForm.setControl('children', this.fb.array([this.createChildFormGroup()]));
 this.personForm.reset()
-this.childrenFormArray
+alert("SUCCESSFULLY ADDED!")
+}
+
+public removeChild(num : number){
+  if(num >0){
+    this.childrenFormArray.removeAt(num)
+  }
 }
   }
+
+

@@ -5,13 +5,13 @@
     <div class="brand-title">Add Person</div>
     <div class="inputs">
       <label>FIRST NAME</label>
-      <input type="text" placeholder="example@test.com" formControlName="firstName"/>
+      <input type="text" placeholder="David" formControlName="firstName"/>
 
       <label>LAST NAME</label>
-      <input type="text" placeholder="example@test.com" formControlName="lastName"/>
+      <input type="text" placeholder="Cohen" formControlName="lastName"/>
 
       <label>EMAIL</label>
-      <input type="email" placeholder="Min 6 charaters long" formControlName="email"/>
+      <input type="email" placeholder="example@test.com" formControlName="email"/>
 
       <ng-container formGroupName="address">
         <label>ADDRESS</label>
@@ -22,9 +22,11 @@
     <ng-container formArrayName="children">
       <ng-container *ngFor="let childForm of childrenFormArray.controls; let i=index" [formGroupName]="i">
             <label>CHILDREN</label>
-            <input type="text" placeholder="name" formControlName="name"/>
-            <input type="number" placeholder="age" formControlName="age"/>
-       <button class="add" (click)="addChild()" type="button">+</button>
+            <input type="text" placeholder="name" formControlName="name" [id]="'nameId' + (i+1)"/>
+            <input type="number" placeholder="age" formControlName="age" [id]="'ageId' + (i+1)"/>
+            
+            <button class="add" (click)="addChild()" type="button">+</button>
+            <button class="add" (click)="removeChild(i)" type="button">-</button>
       </ng-container>
     </ng-container>
 
