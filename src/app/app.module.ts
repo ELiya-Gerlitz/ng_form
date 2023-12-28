@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Edit2NestedFormComponent } from './components/edit2-nested-form/edit2-nested-form.component';
 import { NestedArrayComponent } from './components/nested-array/nested-array.component';
 import { ArrComponent } from './components/arr/arr.component';
+import { AddPersonComponent } from './components/add-person/add-person.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ArrComponent } from './components/arr/arr.component';
     EditComponent,
     Edit2NestedFormComponent,
     NestedArrayComponent,
-    ArrComponent
+    ArrComponent,
+    AddPersonComponent
   ],
   imports: [
     BrowserModule,

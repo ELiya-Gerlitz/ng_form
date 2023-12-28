@@ -1,0 +1,35 @@
+<p>add-person works!</p>
+<form (submit)="submit()" [formGroup]="personForm">
+  <div class="container">
+    <div class="brand-logo"></div>
+    <div class="brand-title">Add Person</div>
+    <div class="inputs">
+      <label>FIRST NAME</label>
+      <input type="text" placeholder="example@test.com" formControlName="firstName"/>
+
+      <label>LAST NAME</label>
+      <input type="text" placeholder="example@test.com" formControlName="lastName"/>
+
+      <label>EMAIL</label>
+      <input type="email" placeholder="Min 6 charaters long" formControlName="email"/>
+
+      <ng-container formGroupName="address">
+        <label>ADDRESS</label>
+        <input type="text" placeholder="city" formControlName="city" />
+        <input type="text" placeholder="street" formControlName="street"/>
+      </ng-container>
+
+    <ng-container formArrayName="children">
+      <ng-container *ngFor="let childForm of childrenFormArray.controls; let i=index" [formGroupName]="i">
+            <label>CHILDREN</label>
+            <input type="text" placeholder="name" formControlName="name"/>
+            <input type="number" placeholder="age" formControlName="age"/>
+       <button class="add" (click)="addChild()" type="button">+</button>
+      </ng-container>
+    </ng-container>
+
+      <button type="submit" class="button1" [disabled]="personForm.invalid"></button>
+    </div>
+
+  </div>
+</form>
